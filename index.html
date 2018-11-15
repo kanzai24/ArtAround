@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+	<title>Art Around</title>
+  <meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="transparent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta name="Author" content="Kanzai Design">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!--  <link rel="icon" type="image/png"  href="img_/favicon.png"> -->
+
+  <link rel="stylesheet" href="incl_/css/normalize.css">
+  <link rel="stylesheet" href="incl_/css/text.css">
+  <link rel="stylesheet" href="incl_/css/common.css">
+
+  <style>
+  	html { 
+  		height: 100%;
+  	}
+
+  	body {
+  		background-image: url(https://c2.staticflickr.com/8/7147/6474835123_6a08f846be_b.jpg);
+  		-webkit-background-size: cover;
+    	-moz-background-size: cover;
+    	-o-background-size: cover;
+    	background-size: cover;
+    	background-position: center;
+  	}
+
+  	a {
+  		color: #FFF;
+  	}
+  	
+
+		#logo {
+		  margin: 25vh auto 20px auto;
+		  width: 70%;
+		  max-width: 300px;
+		}
+
+		#logo img {
+		  width: 100%;
+		}
+
+		#nav {
+		 	text-align: center;
+		 	font-size: 1.5em;
+		}
+
+		#footer {
+			position: fixed;
+			bottom: 0;
+			background-image: none;
+		}
+	}
+
+  </style>
+
+	<script>
+		function goPage(url) {
+		  location.href = url;
+		}
+	</script>
+</head>
+<body>
+
+	<div id="logo"><img src="img_/logo.png"></div>
+
+	<div id="nav">
+		<a href="javascript:goPage('map.html?loc=OAK')">Oakland</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<a href="javascript:goPage('map.html?loc=HNL')">Honolulu</a>
+	</div>
+
+<!-- FOOTER -->
+	<div id="footer">
+		<div>
+			<a href="javascript:goPage('about.html')" class="links">about</a><span class="linkspace"></span>
+			<a href="javascript:goPage('credits.html')" class="links">credits</a><span class="linkspace"></span>
+			<a href="javascript:goPage('contact.html')" class="links">contact</a>
+		</div>
+		<p class="copyright">Copyright &copy; 2016 Art Around • All rights reserved</p>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+	<title>Art Around: Map</title>
+  <meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="transparent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta name="Author" content="Kanzai Design">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+
+<!-- 
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png"  href="img_/favicon.png"> 
+-->
+
+	<link rel="stylesheet" href="incl_/css/leaflet-1.0.0-rc.2.css" />
+	<link rel="stylesheet" href="incl_/css/marker-cluster-0.5.0.css" />
+	<script src="incl_/js/leaflet-1.0.0-rc.2.js"></script>
+	<script src="incl_/js/marker-cluster.js"></script>
+
+  <link rel="stylesheet" href="incl_/css/normalize.css">
+  <link rel="stylesheet" href="incl_/css/text.css">
+  <link rel="stylesheet" href="incl_/css/common.css">
+  <link rel="stylesheet" href="incl_/css/map.css">
+
+  <script src="incl_/js/common.js"></script>
+  <script src="incl_/js/animate.js"></script>
+
+	<script>
+		function init() {
+			createMap();
+			showLayers();
+
+			if (artistID) pageTitle = artistName;
+			else if (projectID) pageTitle = projectName;
+			else pageTitle = locations[mapLoc].name;
+			document.getElementById("pageTitle").innerHTML = pageTitle;
+
+			/* TO DO: Display total marker count */
+
+			document.getElementById("mosaicCnt").innerHTML = " " + mosaicMarkers.length;
+			document.getElementById("muralCnt").innerHTML = " " + muralMarkers.length;
+			/* TO DO: Disable filter if marker count = 0 */
+		}
+	</script>
+</head>
+<body onLoad="init()" onResize="slideDown('filterDIV',56,100)">
+
+	<div id="map"></div>
+
+<!-- HEADER  -->
+	<div id="header">
+		<div id="back"><a href="javascript:goBack()"><img src="img_/arrow_back.png"></a></div>
+		<div id="logo"><a href="javascript:goPage('index.html')"><img src="img_/logo_sm.png"></a></div>
+
+		<div id="gridIcon"><a href="javascript:goPage( 'grid.html?loc=' + mapLoc + (validArtistID ? ('&artist=' + artistID) : '') + (validProjectID ? ('&project=' + projectID) : '') )"><img src="img_/icon_grid.png" alt="Grid"></a></div>
+
+		<div id="pageTitle"></div>
+	</div>
+		
+
+
+<!-- Map Key  -->
+
+	<div id="keyIcon"><a href="javascript:slideUp('filterDIV',160)"><img src="img_/icon_mapkey.png" alt="Map Key"></a></div>
+
+
+	<div id="filterDIV">
+		<div class="filterHeader">
+			<div><a href="javascript:slideDown('filterDIV',57)"><img src="img_/icon_mapkey.png" alt="Map Key"></a></div>
+		</div>
+
+		<form id="types" class="clear spacer">
+		  <div class="filter"><img src="img_/pin_1.png">&nbsp;murals<span id="muralCnt"></span><input class="right" type="checkbox" name="filters" onClick="showLayers()" value="murals" checked> </div>
+		  <div class="filter"><img src="img_/pin_2.png">&nbsp;mosaics<span id="mosaicCnt"></span><input class="right" type="checkbox" name="filters" onClick="showLayers()" value="mosaics" checked></div>
+<!--		  <div class="filter"><img src="img_/pin_3.png">&nbsp;sculptures<input class="right" type="checkbox" name="filters" onClick="showLayers()" value="installations" checked></div> -->
+		</form>
+
+		<div style="text-align:center;margin:8px 0 12px 0"><a href="javascript:slideDown('filterDIV',57)"><img src="img_/X.png" alt="close"></a></div>
+	</div><!--
+	<div id="myLocButton"><a href="javascript:gotoMyLoc()"><img src="img_/icon_myloc.png"></a></div>
+-->
+
+<!-- Art Detail Overlay -->
+	<iframe id="detailDIV" class="frame" src=""></iframe>
+
+	<script src="incl_/js/map.js" ></script>
+	
+</body>
+</html>

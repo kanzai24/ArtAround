@@ -1,0 +1,158 @@
+
+	.container {
+		display: inline-block;	/* SQ: This SHOULD be Block but it results in "SIX" wrapping. */
+		width: 100%;
+		margin: 0 auto;
+		padding-top: 1em;
+	}
+	
+	figure {
+		margin: 0 auto;
+		background-color: #ccc;
+		line-height: 2em;
+		text-align: center;
+	}
+
+	figcaption {
+		padding: 5px;
+		text-align: left;
+		font-size: 1em;
+		border: 1px solid #ccc;
+	}
+	
+	figcaption p {
+		margin: 0;
+		line-height: 1.5em;	
+	}
+
+
+	.twocol {
+		margin-left: 2.5%;
+		margin-bottom: 1%; 
+		width: 46.5%;
+		float: left;
+	}
+
+	.threecol {
+		margin-left: 2.5%;
+		margin-bottom: 1%; 
+		width: 30%;
+		float: left;
+	}
+	
+	.fourcol {
+		margin-left: 2.5%;
+		margin-bottom: 1%;
+		width: 21.9%;
+		float: left;
+	}
+
+	.sixcol {
+		margin-left: 2.5%;
+		margin-bottom: 1%;
+		width: 13.76%;
+		float: left;
+	}
+
+
+  article {
+    margin-bottom: 1em;
+    padding: 5px 5px 2em 5px;
+    height: 180px;
+    border: 2px solid #ccc;
+    background: #fff;
+    -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px; -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.2); -moz-box-shadow: 0 1px 4px rgba(0,0,0,.2); -o-box-shadow: 0 1px 4px rgba(0,0,0,.2); box-shadow: 0 1px 4px rgba(0,0,0,.2);
+  }
+
+  article a {
+    color: #454545;
+  }
+
+  article:hover {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);  /* For Webkit browsers */
+    filter: gray;  /* For IE 6 - 9 */
+    -webkit-transition: all .1s ease;  /* Transition for Webkit browsers */
+  }
+
+  article .title {
+    display: inline-block;
+    font-size: 1em;
+    margin: 3px;
+  }
+
+  article .desc {
+    font-size: 0.9em;
+    margin: 3px;
+  }
+
+  article .pix {
+    background-position:top center;
+    background-repeat:no-repeat;
+    margin: 0;
+    padding: 0;
+    height: 180px;
+    background-size:cover;
+    -moz-background-size:cover;
+    -webkit-background-size:cover;  
+  }
+
+  article .pix:hover {
+    filter: grayscale(100%);
+    -webkit-filter: grayscale(100%);  /* For Webkit browsers */
+    filter: gray;  /* For IE 6 - 9 */
+    -webkit-transition: all .1s ease;  /* Transition for Webkit browsers */
+  }
+		
+	@media (min-width: 1024px) {
+		
+		.container {
+			width: 98%;
+			margin: 0 1%;
+		}		
+	}
+
+	@media (max-width: 960px) {
+		.twocol {
+			width: 46.5%;
+		}
+	
+		.threecol {
+			width: 46.5%;
+		}
+	
+		.fourcol {
+			width: 46.5%;
+		}	
+		
+		.sixcol {
+			width: 30.25%;
+		}		
+	}
+	
+	@media (max-width: 580px) {
+		.twocol {
+			width: 95%;
+		}
+	
+		.threecol {
+			width: 95%;
+		}
+		
+		.fourcol {
+			width: 95%;
+		}
+		
+		.sixcol {
+			width: 45.4%;
+		}	
+
+    article {
+      height: 200px;
+    }
+
+    article .pix {
+      height: 200px;
+    }
+    
+	}

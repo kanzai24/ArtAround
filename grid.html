@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+	<title>Art Around: Grid</title>
+  <meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="transparent" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+	<meta name="Author" content="Kanzai Design">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+
+<!-- 
+	<link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" type="image/png"  href="img_/favicon.png"> 
+-->
+
+  <link rel="stylesheet" href="incl_/css/normalize.css">
+  <link rel="stylesheet" href="incl_/css/text.css">
+  <link rel="stylesheet" href="incl_/css/common.css">
+  <link rel="stylesheet" href="incl_/css/grid.css">
+
+  <script type="text/javascript" src="incl_/js/common.js"></script>
+
+	<script>
+		function init() {
+			createList();
+
+			if (artistID) pageTitle = artistName;
+			else if (projectID) pageTitle = projectName;
+			else pageTitle = locations[mapLoc].name;
+			document.getElementById("pageTitle").innerHTML = pageTitle;
+
+			if ( (artistID && !validArtistID) || (projectID && !validProjectID) )
+				document.getElementById("mapIcon").innerHTML = "";
+		}
+	</script>
+</head>
+<body onLoad="init()" onScroll="scroll()">
+
+<!-- HEADER -->
+	<div id="header">
+		<div id="back"><a href="javascript:goBack()"><img src="img_/arrow_back.png"></a></div>
+		<div id="logo"><a href="javascript:goPage('index.html')"><img src="img_/logo_sm.png"></a></div>
+		<div id="mapIcon"><a href="javascript:goPage('map.html?loc=' + mapLoc + (validArtistID ? ('&artist=' + artistID) : '') + (validProjectID ? ('&project=' + projectID) : '') )"><img src="img_/icon_map.png" alt="Map"></a></div>
+
+		<div id="pageTitle"></div>
+	</div>
+
+
+
+	<div id="main"></div>
+	
+
+
+<!-- FOOTER -->
+	<div id="footer">
+		<div>
+			<a href="javascript:goPage('about.html')" class="links">about</a><span class="linkspace"></span>
+			<a href="javascript:goPage('credits.html')" class="links">credits</a><span class="linkspace"></span>
+			<a href="javascript:goPage('contact.html')" class="links">contact</a>
+		</div>
+		<p class="copyright">Copyright &copy; 2016 Art Around • All rights reserved</p>
+	</div>
+
+<!-- Art Detail Overlay -->
+	<iframe id="detailDIV" class="frame" src=""></iframe>
+
+	<script type="text/javascript" src="incl_/js/grid.js" ></script>
+	
+</body>
+</html>

@@ -1,0 +1,235 @@
+
+@font-face {
+  font-family: 'DIN Pro Condensed Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('DIN Pro Condensed Medium'), url('../webfonts/DINPro-CondMedium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'DIN Pro Condensed Bold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('DIN Pro Condensed Bold'), url('../webfonts/DINPro-CondBold.woff') format('woff');
+}
+
+@font-face {
+  font-family: "latobold";
+  src: url("../webfonts/lato-bold-webfont.eot");
+  src: url("../webfonts/lato-bold-webfont.eot?#iefix") format("embedded-opentype"),
+       url("../webfonts/lato-bold-webfont.woff2") format("woff2"),
+       url("../webfonts/lato-bold-webfont.woff") format("woff"),
+       url("../webfonts/lato-bold-webfont.ttf") format("truetype"),
+       url("../webfonts/lato-bold-webfont.svg#latobold") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "latomedium";
+  src: url("../webfonts/lato-medium-webfont.eot");
+  src: url("../webfonts/lato-medium-webfont.eot?#iefix") format("embedded-opentype"),
+       url("../webfonts/lato-medium-webfont.woff2") format("woff2"),
+       url("../webfonts/lato-medium-webfont.woff") format("woff"),
+       url("../webfonts/lato-medium-webfont.ttf") format("truetype"),
+       url("../webfonts/lato-medium-webfont.svg#latomedium") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "latoregular";
+  src: url("../webfonts/lato-regular-webfont.eot");
+  src: url("../webfonts/lato-regular-webfont.eot?#iefix") format("embedded-opentype"),
+       url("../webfonts/lato-regular-webfont.woff2") format("woff2"),
+       url("../webfonts/lato-regular-webfont.woff") format("woff"),
+       url("../webfonts/lato-regular-webfont.ttf") format("truetype"),
+       url("../webfonts/lato-regular-webfont.svg#latoregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "latolight";
+  src: url("../webfonts/lato-light-webfont.eot");
+  src: url("../webfonts/lato-light-webfont.eot?#iefix") format("embedded-opentype"),
+       url("../webfonts/lato-light-webfont.woff2") format("woff2"),
+       url("../webfonts/lato-light-webfont.woff") format("woff"),
+       url("../webfonts/lato-light-webfont.ttf") format("truetype"),
+       url("../webfonts/lato-light-webfont.svg#latolight") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "latomedium_italic";
+  src: url("../webfonts/lato-mediumitalic-webfont.eot");
+  src: url("../webfonts/lato-mediumitalic-webfont.eot?#iefix") format("embedded-opentype"),
+       url("../webfonts/lato-mediumitalic-webfont.woff2") format("woff2"),
+       url("../webfonts/lato-mediumitalic-webfont.woff") format("woff"),
+       url("../webfonts/lato-mediumitalic-webfont.ttf") format("truetype"),
+       url("../webfonts/lato-mediumitalic-webfont.svg#latomedium_italic") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "latothin";
+  src: url("../webfonts/lato-thin-webfont.eot");
+  src: url("../webfonts/lato-thin-webfont.eot?#iefix") format("embedded-opentype"),
+     url("../webfonts/lato-thin-webfont.woff2") format("woff2"),
+     url("../webfonts/lato-thin-webfont.woff") format("woff"),
+     url("../webfonts/lato-thin-webfont.ttf") format("truetype"),
+     url("../webfonts/lato-thin-webfont.svg#latothin") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+  body {
+    font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 400;
+    text-decoration: none;
+    color: #555555;
+  }
+
+  p {
+    line-height: 1.5em;
+  }
+
+  a {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    color: #000;
+  }
+
+  a:active {
+    color: #999 !important;
+  }
+
+  a:hover {
+    color: #F00 !important;
+  }
+
+  strong {
+    font-weight: 500;
+  }
+
+  h1 {
+    font-family: "DIN Pro Condensed Thin", Helvetica, sans-serif;
+    font-size: 1.7em;
+    line-height: 1.2em;
+    margin-top: 1em;
+  }
+
+  h2 {
+    font-family: "DIN Pro Condensed Thin", Helvetica, sans-serif;
+    font-size: 1.4em;
+    margin-top: 1em;
+  }
+
+  .sm {
+    font-size: 0.9em;
+  }
+
+  #pageTitle {
+    margin: 0 5%;    
+    margin-top: 2px; /* SQ: margin-top: 2px is a hack to fix centering issue */
+    font-family:'DIN Pro Condensed Bold', Helvetica, sans-serif;
+    font-size: 2.8em;
+    line-height: 1em;
+    color: #000;
+    text-transform: uppercase;
+    text-align: center;
+    text-shadow: 0px 0px 24px rgba(255,255,255,1.0);
+
+    -webkit-transition: font 0.3s ease;
+    -moz-transition: font 0.3s ease;
+    -o-transition: font 0.3s ease;
+    -ms-transition: font 0.3s ease;
+    //border: 1px solid #F00;
+  }
+
+  .title {
+    color: #666;
+    font-size: 1.4em;
+    font-weight: 300;
+    line-height: 1.3em;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+  }
+
+  .artist {
+    color: #666;
+    font-size: 1.2em;
+    font-weight: 300;
+    text-align: center;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+  }
+
+  .label {
+    font-family:'DIN Pro Condensed Bold', Helvetica, sans-serif;
+    font-size: 1.3em;
+  }
+
+/*
+
+  .desc {
+    font-size: 1.1em;
+    line-height: 1.2em;
+    width: 100%;
+  }
+
+  .quote {
+    font-family: "latomedium_italic", Helvetica, sans-serif;
+    font-size: 1.0em;
+    font-weight: 400;
+    font-style: italic;
+  }
+*/
+  .copyright {
+    font-size: 0.8em;
+    color: #AEAEAE;
+    margin-top: 1.5em;
+  }
+
+  .links {
+    font-size: 1.0em;
+    line-height: 1.1em;
+  }
+
+@media (min-width: 1024px) {
+
+  p {
+    font-size: 1.4em;
+    line-height: 1.6em;
+  }
+}
+
+@media (max-width: 768px) {
+  p {
+    font-size: 1.2em;
+    line-height: 1.4em;
+  }
+
+  h1 {
+    font-size: 1.4em;
+  }
+
+  h2 {
+    font-size: 1.2em;
+  }
+}
+
+
+@media (max-width: 640px) {
+  p {
+    font-size: 1.1em;
+    line-height: 1.3em;
+  }
+}
+

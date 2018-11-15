@@ -1,0 +1,257 @@
+	body {
+	  height: 100%;     /* full-screen */
+	}
+
+	#map {
+	  height: 100%;     /* full-screen */
+	}
+
+  #pageTitle {
+    font-size: 1.5em;
+  }
+
+/* SCALE CONTROL */
+
+	.leaflet-left .leaflet-control-scale {
+		margin-left: 0px;
+	}
+
+	.leaflet-bottom .leaflet-control-scale {
+		margin-bottom: 0px;
+	}
+
+	.leaflet-control-scale-line {
+		border: 0;
+		border-right: 2px solid #777;
+		padding: 2px 12px;
+	}
+
+	.leaflet-container .leaflet-control-attribution {
+		padding: 2px 12px;
+	}
+
+/* POP UP */
+
+	.leaflet-popup {
+		margin-bottom: 30px;
+		width: 276px;
+		height: 230px;
+	}
+
+	.leaflet-popup-content-wrapper {
+		border-radius: 4px;
+		height: 230px;
+		box-shadow: 0 2px 14px rgba(0,0,0,0.4);
+	}
+
+	.leaflet-popup-tip {
+		display: none;
+	}
+
+	.leaflet-popup-content {
+		margin: 8px;
+		color: #333;
+		line-height: 1.6em;
+	}
+
+	.leaflet-popup-content a {
+		color: #333;
+	}
+
+	.leaflet-container a.leaflet-popup-close-button {
+		display: none;
+	}
+
+	.leaflet-popup-content .pic {
+		width: 260px;
+		height: 172px;
+		margin-bottom: 6px;
+		border: none;
+	  background-position:center center;
+	  background-repeat:no-repeat;
+	  background-size:cover;
+	  -moz-background-size:cover;
+	  -webkit-background-size:cover;  
+	}
+/*
+	.leaflet-popup-content .title {
+		font-family: "latoregular", Helvetica, sans-serif;
+		color: #666;
+		font-size: 1.2em;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space:nowrap;
+	  overflow:hidden;
+	}
+
+	.leaflet-popup-content .artist {
+		font-family: "latoregular", Helvetica, sans-serif;
+		color: #666;
+		font-size: 1.1em;
+		text-align: center;
+		text-overflow: ellipsis;
+		white-space:nowrap;
+	  overflow:hidden;
+	}
+
+	.leaflet-popup-content .artist a {
+	  text-decoration: none;
+	  color: #000;
+	}
+
+	.leaflet-popup-content .artist a:hover {
+	  color: #999;
+	}
+*/
+
+/* CLUSTER */
+
+
+.marker-cluster-small {
+	background-color: rgba(241, 211, 87, 0.6);  /* yellow */
+}
+.marker-cluster-small div {
+	background-color: rgba(240, 194, 12, 0.6);
+}
+
+.marker-cluster-medium {
+	background-color: rgba(253, 156, 115, 0.6);	/* orange */
+}
+.marker-cluster-medium div {
+	background-color: rgba(241, 128, 23, 0.6);
+}
+
+.marker-cluster-large {
+	background-color: rgba(181, 226, 140, 0.6);	/* green */
+}
+.marker-cluster-large div {
+	background-color: rgba(110, 204, 57, 0.6);
+}
+
+/*
+.marker-cluster div {
+	background-image: url(../../img_/splotch_48.png);
+  background-repeat:no-repeat;
+  background-size:cover;
+  -moz-background-size:cover;
+  -webkit-background-size:cover;
+
+	width: 48px;
+	height: 48px;
+	margin-left: -5px;
+	margin-top: -5px;
+	text-align: center;
+	border-radius: 24px;  /* half of icon dimensions 
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 48px;
+}
+
+.marker-cluster-small,
+.marker-cluster-small div {
+	background-color: rgba(255, 214, 25, 0.8);
+}
+
+.marker-cluster-medium,
+.marker-cluster-medium div {
+	background-color: rgba(255, 150, 0, 0.8);
+	color: #FFF;
+}
+
+.marker-cluster-large,
+.marker-cluster-large div {
+	background-color: rgba(255, 57, 57, 0.8);
+	color: #FFF;
+}
+*/
+/* GO TO MY LOCATION */
+
+	#myLocButton {
+	  position: absolute;
+	  bottom: 24px;
+	  right: 8px;
+	  width: 32px;
+	  height: 32px;
+	  z-index: 998;
+	  background-color: #fff;
+	  border: 1px solid #999;
+	  box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+		border-radius: 50%;
+	}
+
+	#myLocButton img {
+		margin: 3px;
+	}
+
+	#myLocButton:hover {
+		background-color: #f4f4f4;
+	}
+
+/* FILTER */
+
+	#keyIcon {
+	  position: absolute;
+	  bottom: 10px;
+	  left: calc(50vw - 55px);
+	  margin: 0 auto;
+	  z-index: 998;
+	}
+
+	#filterDIV {
+	  position: fixed;
+	  display: none;
+	  bottom: -97px;
+		left: calc(50vw - 83px);
+	  width: 150px;
+	  height: 150px;
+	  padding: 8px 8px 6px 8px;
+	  font-size: 1.0em;
+	  line-height: 1.2em;
+	  background-color: #FFF;
+		border-radius: 3px;
+	  z-index: 999;
+	  box-shadow: 0 2px 14px rgba(0,0,0,0.4);
+	}
+
+	.filterHeader {
+		margin: 0 auto;
+		width: 110px;
+	}
+
+	.filterHeader img {
+		display: block;
+		width: 100%;
+		vertical-align: middle;
+	}
+
+	.filter {
+		margin: 0;
+		height: 30px;
+		line-height: 30px;
+	}
+
+	.filter img {
+	  vertical-align: middle;
+	  height: 26px;
+	  margin: 0px 2px 4px 0px;
+	}
+
+	.spacer {
+		padding-top: 4px;
+	}
+
+	#mosaicCnt, #muralCnt {
+		color: #999;
+		font-size: 0.9em;
+	}
+
+	input {
+		vertical-align:middle; 
+	}
+
+	#types input[type=checkbox] {
+		cursor: pointer;
+		//background-color: #0f0;
+		position: relative;
+		top: 8px;
+	}

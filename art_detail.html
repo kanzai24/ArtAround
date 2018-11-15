@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en-us">
+<head>
+  <title>Art Around : Art Detail</title>
+  <meta charset="UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="transparent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<link rel="stylesheet" href="incl_/css/leaflet-1.0.0-rc.2.css" />
+	<script src="incl_/js/leaflet-1.0.0-rc.2.js"></script>
+
+  <link rel="stylesheet" href="incl_/css/normalize.css">
+  <link rel="stylesheet" href="incl_/css/text.css"> 
+  <link rel="stylesheet" href="incl_/css/common.css">
+	<link rel="stylesheet" href="incl_/css/map.css">
+  <link rel="stylesheet" href="incl_/css/art_detail.css">
+
+	<script src="incl_/js/common.js"></script>
+	<script src="incl_/js/animate.js"></script>
+
+  <script>
+  	var idx = getParameterByName("idx");
+	  if (idx == "") idx = 0;
+
+		var mapLoc = getParameterByName("loc");
+		if (!mapLoc) mapLoc = "OAK";
+		loadFile( "incl_/js/markers_" + mapLoc + ".js", "js" );
+
+		function init() {
+			parent.document.body.style.overflowY = "hidden";
+			getScreenSize();
+
+	    var art = artwork[idx];
+		  setMap(art);
+			setContent(art);
+		  setInfo(screenHeight,false);	// move info layer off bottom of the screen
+
+			var zPix = document.getElementById("pix");
+		  var pix = new Image();
+		  pix.src = art.img_lg[0][0];
+		  pix.addEventListener('load', function() {		// once pix is loaded
+				zPix.src = pix.src;
+				centerPix();
+				fadeIn("zoomDIV");
+				resetInfo(true);
+				pix.removeEventListener('load', function(){});		// SQ: is this necessary?
+      }, false);
+		}
+
+  </script>
+</head>
+
+<body onLoad="init()" onResize="resize()">	
+
+	<div id="tintDIV" class="tint"><div class="loading"><img src="img_/spin.gif"></div></div>		
+
+	<div id="zoomDIV" onClick="toggleInfo()" onScroll="scrollInfo()">
+
+		<div id="zPix"> 
+			<img id="pix" src="" />
+		</div>
+
+		<div id="info">	
+			<div id="zTitle" class="title"></div>
+			<div id="zArtist" class="artist"></div>
+
+			<div id="arrow"><img src="img_/arrow_down.png"></div>
+
+			<div id="zProject"></div>
+			<br>
+
+			<div id="zMap"></div>
+			<a href="javascript:getDirections()" target="_blank">get directions</a>
+
+		</div>
+	</div>
+
+	<div id="zHeader">
+		<div id="zCredit"></div>
+		<div id="close" onClick="closeDetail()"><img src="img_/X.png" alt="close"></div>	
+	</div>
+
+	<script>
+		function closeDetail () {
+			parent.document.body.style.overflowY = "auto";
+			clearDetail(); 
+			setTimeout(parent.hideDetail(),500)
+		}
+
+  	function getDirections() {
+  		alert("Open Google Maps to get directions");
+  		//parent.window.open("https://www.google.com/maps?z=14&q=loc:" + art.latitude + "+" + art.longitude, "_blank");
+  	}
+
+		function centerPix(animate) {
+		  var zPix = document.getElementById("pix");
+		  var pixWidth = zPix.width; 
+		  //console.log("pix width: " + pixWidth);
+
+		  var zoomPix = document.getElementById("zPix");
+
+		  var endPos = Math.round( (pixWidth - screenWidth) / 2 );
+		  var inc = 40;
+		  var incPos = Math.round( endPos/inc );
+		  //console.log("center: " + endPos);
+
+		  if (!animate) {
+		    zoomPix.scrollLeft = endPos;
+		  } else {
+		    var currPos = zoomPix.scrollLeft = 0; // endPos - 100;	scroll only 100px
+		    var id = setInterval( scrollPix, 20);
+		    function scrollPix() {
+		      if (currPos > endPos) {
+		        clearInterval(id);
+		      } else {
+		        zoomPix.scrollLeft += incPos; // 10;  scroll by 10px
+		        currPos = zoomPix.scrollLeft;     
+		      }
+		      //console.log("animate: " + currPos);
+		    }
+		  }
+		}
+
+		var posFromTop = 90;  // posFromBottom - title padding-top
+		var posFromBottom = 120;
+		var infoUp = false;
+		function toggleInfo() {
+		  (infoUp) ? resetInfo(true) : setInfo(posFromTop,true);
+		}
+
+		function scrollInfo() { 
+		  var zDIV = document.getElementById("zoomDIV");      
+		  var arrow = document.getElementById("arrow");
+		  //console.log("scroll: " + zDIV.scrollTop);
+
+		  if (zDIV.scrollTop == 0) {
+		  	showObj("arrow");
+		    infoUp = false; 
+		  } else {
+		  	hideObj("arrow");
+		    infoUp = true;          
+		  }
+		}
+
+		function resetInfo(animate) {
+		  getScreenSize();
+
+		  var defPosition = (screenHeight - posFromBottom);
+
+		  var zDIV = document.getElementById("zoomDIV");        
+		  if (zDIV.scrollTop > 0) {
+		    moveObjY("info", (defPosition-zDIV.scrollTop), 0);
+		    zDIV.scrollTop = 0;
+		  }
+
+		  var speed =  (!animate) ? 0 : 500;
+		  moveObjY("info", defPosition, speed);
+
+		  showObj("arrow");
+		  infoUp = false;
+		  //console.log("reset info: " + defPosition + " : " + zDIV.scrollTop);
+		}
+
+		function setInfo(pos,animate) {
+		  getScreenSize();
+
+		  var zInfo = document.getElementById("info");
+		  var speed = (!animate) ? 0 : 500;
+		  var position = (!pos) ? 0 : pos;
+		  moveObjY("info", pos, speed);
+
+		  hideObj("arrow");
+		  infoUp = true;
+		  //console.log("set info: " + zInfo.style.top);
+		}
+
+		function clearDetail() {
+		  var zPix = document.getElementById("pix");
+		  zPix.src = "";
+
+		  var zTitle = document.getElementById("zTitle");
+		  zTitle.innerHTML = "";
+
+		  var zArtist = document.getElementById("zArtist");
+		  zArtist.innerHTML = "";
+
+		  var zCredit = document.getElementById("zCredit");
+		  zCredit.innerHTML = "";
+
+		  var zProject = document.getElementById("zProject");
+		  zProject.innerHTML = "";
+		  
+		  fadeOut("zoomDIV");
+		}
+
+		function resize() {
+			resetInfo(false); 
+			centerPix();
+		}
+
+		function setContent(art) {	
+		  var zTitle = document.getElementById("zTitle");
+		  zTitle.innerHTML = art.title;
+
+		  var zDate = document.getElementById("zDate");
+		  if (art.date) zTitle.innerHTML += "<span class='sm'> ~ " + art.date + "</span>";
+
+		  var zArtist = document.getElementById("zArtist");
+		  zArtist.innerHTML = getArtist(art);
+
+		  var zCredit = document.getElementById("zCredit");
+		  if (art.img_lg[0][1]) zCredit.innerHTML = "photo &copy; " + art.img_lg[0][1];
+
+		  var zProject = document.getElementById("zProject");
+		  if (art.project) zProject.innerHTML = "<a href='javascript:goProject(\"" + art.project + "\")'>" + projects[art.project].name + "</a>";
+		}
+
+		function setMap(art) {
+
+		/* INITIALIZE MAP */
+			var mapStyle = "https://api.mapbox.com/styles/v1/mapbox/streets-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1Ijoia2FuemFpIiwiYSI6ImNpcXE2b3JpeTAyanhnbmpmMzZkOThjN3gifQ.29ejYqsMFooq2wYQsNEcvw";
+
+			var mapTiles = L.tileLayer(mapStyle, {
+				maxZoom: 20,
+				minZoom: 2,
+				attribution: ''
+			});
+
+			var mapCenter = L.latLng( art.latitude, art.longitude );
+			var map = L.map('zMap', {
+				center: mapCenter,
+				zoom: 12, 
+				layers: [mapTiles],
+				zoomControl: false,
+				attributionControl: false,
+				closePopupOnClick: false
+			});
+
+		/* ADD MARKER TO MAP */
+			var icon = L.icon({
+	  		iconUrl: 'img_/pin_' + art.type + '.png',
+		  	iconRetinaUrl: 'img_/pin_' + art.type + '@2x.png',
+				iconSize: [28, 40],
+		  	iconAnchor: [14, 30],
+		  	popupAnchor: [0, 70]
+	  	});
+
+			var loc = '<div id="zLocation">' + art.location[0] + ', <span>' + locations[art.location[1]].name + '</span></div>';
+			var marker = L.marker(mapCenter, {
+				icon: icon,
+				//content: zLoc
+			});
+			marker.bindPopup(loc);
+			map.addLayer(marker);	
+			marker.openPopup();		// SQ: must be after zMap.addLayer otherwise popup doesn't appear
+
+
+		/* DISABLE ZOOM AND DRAG PAN */
+			map.scrollWheelZoom.disable();
+			map.dragging.disable();
+
+			//map.on('click', getDirections);		// when user taps anywhere on the map			
+		}
+
+	</script>
+
+</body>
